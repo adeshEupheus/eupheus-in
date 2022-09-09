@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Payment" ALTER COLUMN "phone" SET DATA TYPE TEXT;

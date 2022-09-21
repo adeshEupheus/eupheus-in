@@ -27,7 +27,7 @@ app.use("/user", auth_1.auth, user_1.default);
 app.use("/news", news_1.default);
 app.use("/payment", payment_1.default);
 app.use("/schools", schools_1.default);
-app.use("/keys", auth_1.auth, keys_1.default);
+app.use("/keys", keys_1.default);
 const PORT = process.env.PORT || 5060;
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT} `);

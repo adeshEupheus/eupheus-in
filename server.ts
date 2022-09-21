@@ -26,7 +26,7 @@ app.use("/user", auth, userRouter);
 app.use("/news", newsRouter);
 app.use("/payment", paymentRouter);
 app.use("/schools", schoolRouter);
-app.use("/keys", auth, keyRouter);
+app.use("/keys", keyRouter);
 
 const PORT = process.env.PORT || 5060;
 

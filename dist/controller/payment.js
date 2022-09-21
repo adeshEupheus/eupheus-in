@@ -32,6 +32,10 @@ const payment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         payment_capture,
     };
     try {
+        const razorpay = new razorpay_1.default({
+            key_id: process.env.RAZORPAY_KEY,
+            key_secret: process.env.RAZORPAY_SECRET,
+        });
         const response = yield razorpay.orders.create(options);
         console.log(response);
         res.status(200).json({

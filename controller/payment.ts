@@ -24,6 +24,10 @@ export const payment: RequestHandler = async (req, res) => {
   };
 
   try {
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY,
+      key_secret: process.env.RAZORPAY_SECRET,
+    });
     const response = await razorpay.orders.create(options);
     console.log(response);
     res.status(200).json({

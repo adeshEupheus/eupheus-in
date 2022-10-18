@@ -43,6 +43,8 @@ model Payment {
   parentName String
   class Int
   section String
+  school Schools @relation(fields: [SchoolId], references: [id])
+  SchoolId Int
    createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -52,6 +54,7 @@ model Schools {
   name String
   state String
   city String
+  payment Payment[]
   coupon String @unique
   price Float
 }

@@ -14,6 +14,7 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const createUnsubscrie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(req.body);
         const newUnsubscribe = yield prisma.unsubscribe.create({
             data: req.body,
         });

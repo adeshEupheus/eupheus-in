@@ -5,6 +5,8 @@ const prisma = new PrismaClient();
 
 export const createUnsubscrie: RequestHandler = async (req, res) => {
   try {
+    console.log(req.body);
+
     const newUnsubscribe = await prisma.unsubscribe.create({
       data: req.body,
     });

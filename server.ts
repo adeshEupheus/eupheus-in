@@ -17,6 +17,7 @@ import authRouter from "./routes/auth";
 import paymentRouter from "./routes/payment";
 import schoolRouter from "./routes/schools";
 import keyRouter from "./routes/keys";
+import UnsubscribeRouter from "./routes/unsubscribe";
 
 app.get("/", (req, res) => {
   res.send("server is working");
@@ -27,6 +28,7 @@ app.use("/news", newsRouter);
 app.use("/payment", paymentRouter);
 app.use("/schools", schoolRouter);
 app.use("/keys", keyRouter);
+app.use("/unsubscribe", UnsubscribeRouter);
 
 const PORT = process.env.PORT || 5060;
 

@@ -19,6 +19,7 @@ const auth_2 = __importDefault(require("./routes/auth"));
 const payment_1 = __importDefault(require("./routes/payment"));
 const schools_1 = __importDefault(require("./routes/schools"));
 const keys_1 = __importDefault(require("./routes/keys"));
+const unsubscribe_1 = __importDefault(require("./routes/unsubscribe"));
 app.get("/", (req, res) => {
     res.send("server is working");
 });
@@ -28,6 +29,7 @@ app.use("/news", news_1.default);
 app.use("/payment", payment_1.default);
 app.use("/schools", schools_1.default);
 app.use("/keys", keys_1.default);
+app.use("/unsubscribe", unsubscribe_1.default);
 const PORT = process.env.PORT || 5060;
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT} `);

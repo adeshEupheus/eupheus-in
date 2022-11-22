@@ -58,3 +58,11 @@ model Schools {
   coupon String @unique
   price Float
 }
+
+model Unsubscribe {
+  id Int @id @default(autoincrement())
+  email String
+  status Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

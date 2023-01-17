@@ -21,7 +21,7 @@ const schools_1 = __importDefault(require("./routes/schools"));
 const keys_1 = __importDefault(require("./routes/keys"));
 const unsubscribe_1 = __importDefault(require("./routes/unsubscribe"));
 app.get("/", (req, res) => {
-    res.send("server is working!!");
+    res.send("server is working!");
 });
 app.use("/auth", auth_2.default);
 app.use("/user", auth_1.auth, user_1.default);

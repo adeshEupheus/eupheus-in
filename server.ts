@@ -32,7 +32,7 @@ app.use("/schools", schoolRouter);
 app.use("/keys", keyRouter);
 app.use("/unsubscribe", UnsubscribeRouter);
 
-const PORT = process.env.PORT || 5060;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT} `);

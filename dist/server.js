@@ -31,7 +31,7 @@ app.use("/payment", payment_1.default);
 app.use("/schools", schools_1.default);
 app.use("/keys", keys_1.default);
 app.use("/unsubscribe", unsubscribe_1.default);
-const PORT = process.env.PORT || 5060;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT} `);
 });

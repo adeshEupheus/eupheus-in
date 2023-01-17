@@ -20,6 +20,7 @@ const payment_1 = __importDefault(require("./routes/payment"));
 const schools_1 = __importDefault(require("./routes/schools"));
 const keys_1 = __importDefault(require("./routes/keys"));
 const unsubscribe_1 = __importDefault(require("./routes/unsubscribe"));
+console.log(process.env.RAZORPAY_KEY);
 app.get("/", (req, res) => {
     res.send("server is working!");
 });

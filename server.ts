@@ -19,6 +19,8 @@ import schoolRouter from "./routes/schools";
 import keyRouter from "./routes/keys";
 import UnsubscribeRouter from "./routes/unsubscribe";
 
+console.log(process.env.RAZORPAY_KEY);
+
 app.get("/", (req, res) => {
   res.send("server is working!");
 });

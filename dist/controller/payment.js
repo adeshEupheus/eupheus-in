@@ -17,6 +17,7 @@ const shortid_1 = require("shortid");
 const razorpay_1 = __importDefault(require("razorpay"));
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
+console.log(process.env.RAZORPAY_KEY);
 const razorpay = new razorpay_1.default({
     key_id: process.env.RAZORPAY_KEY,
     key_secret: process.env.RAZORPAY_SECRET,

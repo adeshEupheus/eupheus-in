@@ -20,7 +20,7 @@ import keyRouter from "./routes/keys";
 import UnsubscribeRouter from "./routes/unsubscribe";
 
 app.get("/", (req, res) => {
-  res.send("server is working");
+  res.send("server is working!!");
 });
 app.use("/auth", authRouter);
 app.use("/user", auth, userRouter);

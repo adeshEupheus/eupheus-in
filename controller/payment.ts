@@ -22,6 +22,7 @@ export const payment: RequestHandler = async (req, res) => {
     currency,
     receipt: generate(),
     payment_capture,
+    description: "Payment for TOEFL",
   };
 
   try {

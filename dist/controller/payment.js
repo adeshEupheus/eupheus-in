@@ -31,6 +31,7 @@ const payment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         currency,
         receipt: (0, shortid_1.generate)(),
         payment_capture,
+        description: "Payment for TOEFL",
     };
     try {
         const razorpay = new razorpay_1.default({

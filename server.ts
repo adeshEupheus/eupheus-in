@@ -22,7 +22,7 @@ import UnsubscribeRouter from "./routes/unsubscribe";
 console.log(process.env.RAZORPAY_KEY);
 
 app.get("/", (req, res) => {
-  res.send("server is working!");
+  res.send("server is working!!!!");
 });
 app.use("/auth", authRouter);
 app.use("/user", auth, userRouter);

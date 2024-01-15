@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createPayment = exports.payment = void 0;
+exports.changeStatus = exports.createPayment = exports.payment = void 0;
 const shortid_1 = require("shortid");
 const razorpay_1 = __importDefault(require("razorpay"));
 const client_1 = require("@prisma/client");
@@ -31,7 +31,6 @@ const payment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         currency,
         receipt: (0, shortid_1.generate)(),
         payment_capture,
-        description: "Payment for TOEFL",
     };
     try {
         const razorpay = new razorpay_1.default({
@@ -47,7 +46,7 @@ const payment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
     catch (error) {
-        console.log(error);
+        console.log("something went wrong", error);
     }
 });
 exports.payment = payment;
@@ -65,3 +64,14 @@ const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.createPayment = createPayment;
+const changeStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.body);
+        res.status(200).json(req.body);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "something went wrong" });
+    }
+});
+exports.changeStatus = changeStatus;

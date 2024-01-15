@@ -22,7 +22,6 @@ export const payment: RequestHandler = async (req, res) => {
     currency,
     receipt: generate(),
     payment_capture,
-    description: "Payment for TOEFL",
   };
 
   try {
@@ -38,7 +37,7 @@ export const payment: RequestHandler = async (req, res) => {
       amount: response.amount,
     });
   } catch (error) {
-    console.log(error);
+    console.log("something went wrong", error);
   }
 };
 
@@ -50,6 +49,17 @@ export const createPayment: RequestHandler = async (req, res) => {
       data: req.body,
     });
     res.status(200).json(payment);
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({ msg: "something went wrong" });
+  }
+};
+
+export const changeStatus: RequestHandler = async (req, res) => {
+  try {
+    console.log(req.body);
+    res.status(200).json(req.body);
   } catch (error) {
     console.log(error);
 

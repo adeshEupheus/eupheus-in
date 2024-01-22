@@ -88,7 +88,7 @@ const changeStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (event === "payment.captured") {
             const payment = yield prisma.payment.update({
                 where: {
-                    id: Number(payload.payment.entity.order_id),
+                    orderid: payload.payment.entity.order_id,
                 },
                 data: {
                     status: "captured",
@@ -99,7 +99,7 @@ const changeStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (event === "payment.failed") {
             const payment = yield prisma.payment.update({
                 where: {
-                    id: Number(payload.payment.entity.order_id),
+                    orderid: payload.payment.entity.order_id,
                 },
                 data: {
                     status: "failed",

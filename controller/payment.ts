@@ -82,7 +82,7 @@ export const changeStatus: RequestHandler = async (req, res) => {
     if (event === "payment.captured") {
       const payment = await prisma.payment.update({
         where: {
-          id: Number(payload.payment.entity.order_id),
+          orderid: payload.payment.entity.order_id,
         },
         data: {
           status: "captured",
@@ -94,7 +94,7 @@ export const changeStatus: RequestHandler = async (req, res) => {
     if (event === "payment.failed") {
       const payment = await prisma.payment.update({
         where: {
-          id: Number(payload.payment.entity.order_id),
+          orderid: payload.payment.entity.order_id,
         },
         data: {
           status: "failed",

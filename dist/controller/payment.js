@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeStatus = exports.createPayment = exports.payment = void 0;
+exports.changeStatus = exports.updatePayment = exports.createPayment = exports.payment = void 0;
 const shortid_1 = require("shortid");
 const razorpay_1 = __importDefault(require("razorpay"));
 const client_1 = require("@prisma/client");
@@ -64,9 +64,49 @@ const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.createPayment = createPayment;
+const updatePayment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.body);
+        const payment = yield prisma.payment.update({
+            where: {
+                id: Number(req.params.id),
+            },
+            data: req.body,
+        });
+        res.status(200).json(payment);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "something went wrong" });
+    }
+});
+exports.updatePayment = updatePayment;
 const changeStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);
+        const { event, payload } = req.body;
+        if (event === "payment.captured") {
+            const payment = yield prisma.payment.update({
+                where: {
+                    id: Number(payload.payment.entity.order_id),
+                },
+                data: {
+                    status: "captured",
+                    paymentID: payload.payment.entity.id,
+                },
+            });
+        }
+        if (event === "payment.failed") {
+            const payment = yield prisma.payment.update({
+                where: {
+                    id: Number(payload.payment.entity.order_id),
+                },
+                data: {
+                    status: "failed",
+                    paymentID: payload.payment.entity.id,
+                },
+            });
+        }
         res.status(200).json(req.body);
     }
     catch (error) {

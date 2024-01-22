@@ -47,6 +47,8 @@ model Payment {
   section String
   school Schools @relation(fields: [SchoolId], references: [id])
   SchoolId Int
+  orderid String? @unique
+  status String?
    createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -56,9 +56,53 @@ export const createPayment: RequestHandler = async (req, res) => {
   }
 };
 
+export const updatePayment: RequestHandler = async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const payment = await prisma.payment.update({
+      where: {
+        id: Number(req.params.id),
+      },
+      data: req.body,
+    });
+    res.status(200).json(payment);
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({ msg: "something went wrong" });
+  }
+};
+
 export const changeStatus: RequestHandler = async (req, res) => {
   try {
     console.log(req.body);
+    const { event, payload } = req.body;
+
+    if (event === "payment.captured") {
+      const payment = await prisma.payment.update({
+        where: {
+          id: Number(payload.payment.entity.order_id),
+        },
+        data: {
+          status: "captured",
+          paymentID: payload.payment.entity.id,
+        },
+      });
+    }
+
+    if (event === "payment.failed") {
+      const payment = await prisma.payment.update({
+        where: {
+          id: Number(payload.payment.entity.order_id),
+        },
+        data: {
+          status: "failed",
+          paymentID: payload.payment.entity.id,
+        },
+      });
+    }
+
     res.status(200).json(req.body);
   } catch (error) {
     console.log(error);

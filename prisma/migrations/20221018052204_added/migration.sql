@@ -1,5 +1,0 @@
--- AlterTable
-ALTER TABLE "Payment" ADD COLUMN     "SchoolId" INTEGER NOT NULL DEFAULT 0;
-
--- AddForeignKey
-ALTER TABLE "Payment" ADD CONSTRAINT "Payment_SchoolId_fkey" FOREIGN KEY ("SchoolId") REFERENCES "Schools"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

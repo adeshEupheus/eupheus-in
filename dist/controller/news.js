@@ -32,6 +32,7 @@ const getAllNews = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.status(200).json(allNews);
     }
     catch (error) {
+        console.log(error);
         res.status(500).json({ msg: "something went wrong" });
     }
 });

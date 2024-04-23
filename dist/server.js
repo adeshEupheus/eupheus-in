@@ -20,6 +20,7 @@ const payment_1 = __importDefault(require("./routes/payment"));
 const schools_1 = __importDefault(require("./routes/schools"));
 const keys_1 = __importDefault(require("./routes/keys"));
 const unsubscribe_1 = __importDefault(require("./routes/unsubscribe"));
+const oslite_1 = __importDefault(require("./routes/oslite"));
 console.log(process.env.RAZORPAY_KEY);
 app.get("/", (req, res) => {
     res.send("server is working");
@@ -30,6 +31,7 @@ app.use("/news", news_1.default);
 app.use("/payment", payment_1.default);
 app.use("/schools", schools_1.default);
 app.use("/keys", keys_1.default);
+app.use("/oslite", oslite_1.default);
 app.use("/unsubscribe", unsubscribe_1.default);
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

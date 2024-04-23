@@ -23,6 +23,8 @@ export const getAllNews: RequestHandler = async (req, res) => {
     const allNews = await prisma.news.findMany();
     res.status(200).json(allNews);
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({ msg: "something went wrong" });
   }
 };

@@ -77,7 +77,7 @@ model OsLiteRegistration {
   lastName String
   Designation String
   email String
-  mobile Int
+  mobile String
   schoolName String
   eupheusSales String
   state String

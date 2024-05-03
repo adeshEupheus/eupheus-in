@@ -86,3 +86,20 @@ model OsLiteRegistration {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model OsLiteState {
+  id Int @id @default(autoincrement())
+  state String
+  oslitePersons OsLiteSalesPersons[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OsLiteSalesPersons {
+  id Int @id @default(autoincrement())
+  name String
+  stateId Int
+  osliteState OsLiteState  @relation(fields: [stateId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
